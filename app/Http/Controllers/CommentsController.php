@@ -44,7 +44,7 @@ class CommentsController extends Controller
             'post_id' => $request->post_id
         ]);
         // ->route('pages.posts.user_id', $post->id)
-        return redirect('/posts')->with('status', 'Your comment has been added');
+        return redirect('/post/'.$request->post_id)->with('status', 'Your comment has been added');
     }
 
     /**

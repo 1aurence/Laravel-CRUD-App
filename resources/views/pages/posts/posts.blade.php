@@ -2,8 +2,6 @@
 @section('content')
 
 <h1>Posts</h1>
-{{$posts}}
-
 @if (session('status'))
 <div class="alert alert-success">
     {{ session('status') }}

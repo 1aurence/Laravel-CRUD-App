@@ -14,13 +14,13 @@ public function dashboard(){
     return view('pages.dashboard')->with('posts', $posts);
 
 }
-public function posts(){
-    return view('pages.posts.posts');
-
-}
-public function user_post($id){
-    $post = Post::find($id)->first();
-    return view('pages.posts.user_post')->with(compact('post',$post));
+public function user_post($post_id){
+    $post = Post::find($post_id)->first();
+    $data = [
+        'post' => $post,
+        'post_id' => $post_id,
+    ];
+    return view('pages.posts.user_post')->with('data', $data);
 
 }
 }
