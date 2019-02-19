@@ -15,9 +15,16 @@
     <li class="list-group-item card mb-2">
     <a href="/post/{{$post->id}}">{{$post->title}}</a>
     <br>
-        <small>Written on {{$post->created_at}} by {{$post->user['name']}}</small>
+        <small>Written on {{$post->created_at}} by 
+            @if (Auth::user()->name === $post->user['name'])
+                <strong>{{$post->user['name']}}</strong>
+                @else
+                {{$post->user['name']}}
+            @endif    
+        
+        </small>
         <p>{{ str_limit($post->body, $limit = 280, $end = '...') }}</p>
-        <a href="/post/{{$post->id}}" class="text-muted">View post</a>
+        <a href="post/{{$post->id}}" class="text-muted">View post</a>
     </li>
 </ul>
 

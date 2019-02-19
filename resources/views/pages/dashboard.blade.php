@@ -15,10 +15,12 @@
         <small>Written on {{$post->created_at}} by {{$post->user['name']}}</small>
         <p>{{ str_limit($post->body, $limit = 280, $end = '...') }}</p>
         <a href="/post/{{$post->id}}" class="text-muted">View post</a> 
-        {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'DELETE'])!!}
-    
-        {{Form::submit('Delete', ['class' => 'btn btn-danger', 'id' => 'delete-btn'])}}
-        {!!Form::close()!!}
+        <div class="buttons d-flex">
+                <a href="/posts/{{$post->id}}/edit" class="btn btn-secondary mr-2"> Edit </a>
+                {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'DELETE'])!!}
+                {{Form::submit('Delete', ['class' => 'btn btn-danger mr-2', 'id' => 'delete-btn'])}}
+                {!!Form::close()!!}  
+                </div> 
         <script>
             $('#delete-btn').click(() => confirm('Are you sure?'))
         </script>

@@ -88,7 +88,11 @@ class CommentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $post_id = Comment::find($id);
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect('/post/'.$post_id->post_id)->with('status', 'Your comment has been removed');
+ 
     }
 }

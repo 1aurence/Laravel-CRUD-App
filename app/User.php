@@ -9,7 +9,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     public function posts(){
-        return $this->hasMany('App\Post', 'user_id', 'id');
+        return $this->hasMany('App\Post');
+    }
+    public function comments() {
+        return $this->hasMany('App\Comment');
+
     }
 
     use Notifiable;

@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->integer('user_id')->refrences('id')->on('users')->onDelete('cascade');
+            $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->text('body');
             $table->increments('id');
