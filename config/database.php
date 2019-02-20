@@ -58,11 +58,12 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST'),
-            'port' => env('DB_PORT'),
-            'database' => env('DB_DATABASE'),
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
+            'host' => 'ec2-54-204-41-109.compute-1.amazonaws.com',
+            'port' => '5432',
+            'database' => 'd29pubkj79q64i',
+            'username' => 'pvwhkddgmmmlwr',
+            'password' => '9bcf895539a06f02667fd991aa342b42957af1a75a6940860fb833fcb8721617',
+            'URI' => 'postgres://pvwhkddgmmmlwr:9bcf895539a06f02667fd991aa342b42957af1a75a6940860fb833fcb8721617@ec2-54-204-41-109.compute-1.amazonaws.com:5432/d29pubkj79q64i',
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
