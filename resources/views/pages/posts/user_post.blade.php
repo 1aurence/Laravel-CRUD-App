@@ -9,9 +9,9 @@
 <p>{{$data['post']->body}}</p>
 @if (Auth::user()->id === $data['post']->user->id)
 <div class="buttons d-flex">
-<a href="/posts/{{$data['post_id']}}/edit" class="btn btn-secondary mr-2"> Edit </a>
+<a href="/posts/{{$data['post_id']}}/edit" class="btn btn-sm btn-secondary mr-2"> Edit </a>
 {!!Form::open(['action' => ['PostsController@destroy', $data['post']->id], 'method' => 'DELETE'])!!}
-{{Form::submit('Delete', ['class' => 'btn btn-danger mr-2', 'id' => 'delete-btn'])}}
+{{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2', 'id' => 'delete-btn'])}}
 {!!Form::close()!!}  
 </div>  
 @endif
@@ -23,7 +23,7 @@
     {{Form::label('body', 'Comment')}}
     {{Form::textarea('body', '', ['class' => 'form-control', 'rows' => '2', 'cols' => '20'])}}
     {{ Form::hidden('post_id', $data['post_id']) }}
-    {{ Form::submit('Reply', ['class' =>' btn btn-primary mt-2']) }}
+    {{ Form::submit('Reply', ['class' =>' btn btn-sm btn-primary mt-2']) }}
 {!! Form::close() !!}
 </div>
 

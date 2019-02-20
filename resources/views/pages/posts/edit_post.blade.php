@@ -1,6 +1,6 @@
 @extends('layouts.app') 
 @section('content')
-<div class="form-group mt-4 col-sm-6 card card-body bg-light">
+<div class="form-group mt-4  card card-body bg-light">
     <h1>Edit Post</h1>
     {!! Form::open(['action' => ['PostsController@update', $post[0]->id], 'method' => 'PUT']) !!} 
     {{Form::label('title', 'Title')}}

@@ -2,7 +2,7 @@
 @section('content')
 
 <h1>Dashboard</h1>
-<h3>Your posts...</h3>
+<h3 class="py-4">Your posts...</h3>
 @if (session('status'))
 <div class="alert alert-success">
     {{ session('status') }}
@@ -16,9 +16,9 @@
         <p>{{ str_limit($post->body, $limit = 280, $end = '...') }}</p>
         <a href="/post/{{$post->id}}" class="text-muted">View post</a> 
         <div class="buttons d-flex">
-                <a href="/posts/{{$post->id}}/edit" class="btn btn-secondary mr-2"> Edit </a>
+                <a href="/posts/{{$post->id}}/edit" class="btn btn-sm btn-secondary mr-2"> Edit </a>
                 {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'DELETE'])!!}
-                {{Form::submit('Delete', ['class' => 'btn btn-danger mr-2', 'id' => 'delete-btn'])}}
+                {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2', 'id' => 'delete-btn'])}}
                 {!!Form::close()!!}  
                 </div> 
         <script>

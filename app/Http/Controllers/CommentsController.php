@@ -37,7 +37,6 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        // $post = Post::findOrFail($request->post_id);
         Comment::create([
             'body' => $request->body,
             'user_id' => Auth::id(),
@@ -89,8 +88,8 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {   
-        $post_id = Comment::find($id);
-        $comment = Comment::find($id);
+        $post_id = Comment::findOrFail($id);
+        $comment = Comment::findOrFail($id);
         $comment->delete();
         return redirect('/post/'.$post_id->post_id)->with('status', 'Your comment has been removed');
  

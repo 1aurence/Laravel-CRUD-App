@@ -65,7 +65,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        $post = Post::find($post);    
+        $post = Post::findOrFail($post);    
         return view('pages.posts.edit_post')->with('post', $post);
 
     }
@@ -79,7 +79,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->save();
@@ -94,8 +94,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $post->delete();
-        return redirect('/dashboard')->with('status', 'Post has been successfully deleted');
+        return redirect()->route('dashboard')->with('status', 'Post has been successfully deleted');
     }
 }

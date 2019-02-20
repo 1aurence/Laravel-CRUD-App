@@ -2,6 +2,11 @@
 @section('content')
 
 <h1>Posts</h1>
+
+@foreach ($posts as $post)
+
+@endforeach
+
 @if (session('status'))
 <div class="alert alert-success">
     {{ session('status') }}
@@ -10,18 +15,16 @@
  @if(count($posts) > 0) 
  
  @foreach ($posts as $post)
-
 <ul class="list-group">
     <li class="list-group-item card mb-2">
     <a href="/post/{{$post->id}}">{{$post->title}}</a>
     <br>
         <small>Written on {{$post->created_at}} by 
-            @if (Auth::user()->name === $post->user['name'])
-                <strong>{{$post->user['name']}}</strong>
+             @if (Auth::user()->name === $post->user['name'])
+                 <strong>{{$post->user->name}}</strong> 
                 @else
-                {{$post->user['name']}}
+                {{$post->user->name}}
             @endif    
-        
         </small>
         <p>{{ str_limit($post->body, $limit = 280, $end = '...') }}</p>
         <a href="post/{{$post->id}}" class="text-muted">View post</a>

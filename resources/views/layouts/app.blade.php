@@ -33,7 +33,7 @@
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script>
         CKEDITOR.replace( 'article-ckeditor' );
-
+        CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
     </script>
 </body>
 
