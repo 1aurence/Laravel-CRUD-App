@@ -38,6 +38,10 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|max:40|min:5',
+            'body' => 'required|max:550'
+        ]);
            Post::create([
                'user_id' => Auth::id(),
                'title' => request('title'),
@@ -79,11 +83,15 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required|max:40|min:5',
+            'body' => 'required|max:550'
+        ]);    
         $post = Post::findOrFail($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->save();
-        return redirect('posts')->with('success', 'Your post has been edited');
+        return redirect('post/'.$post->id)->with('success', 'Your post has been updated');
     }
 
     /**
@@ -96,6 +104,6 @@ class PostsController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->delete();
-        return redirect()->route('dashboard')->with('status', 'Post has been successfully deleted');
+        return redirect('/posts')->with('status', 'Post has been successfully deleted');
     }
 }

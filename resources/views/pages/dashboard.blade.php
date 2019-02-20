@@ -7,7 +7,9 @@
 <div class="alert alert-success">
     {{ session('status') }}
 </div>
-@endif @if (count($posts) > 0) @foreach ($posts as $post)
+@endif
+
+@if (count($posts) > 0) @foreach ($posts as $post)
 <ul class="list-group col-sm-6">
     <li class="list-group-item card mb-2">
         <a href="/post/{{$post->id}}">{{$post->title}}</a>
@@ -21,10 +23,14 @@
                 {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2', 'id' => 'delete-btn'])}}
                 {!!Form::close()!!}  
                 </div> 
-        <script>
-            $('#delete-btn').click(() => confirm('Are you sure?'))
-        </script>
-    </li>
+
+<script>
+$( document ).ready(function() {
+    $('#delete-btn').click(() => confirm('Are you sure?'))
+});
+</script>
+
+</li>
 </ul>
 @endforeach @else
 <p>You currently have no posts...</p>

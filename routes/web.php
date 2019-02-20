@@ -11,3 +11,4 @@ Route::get('/post/{id}', 'PagesController@user_post')->middleware('auth')->name(
 
 Route::resource('posts', 'PostsController')->middleware('auth');
 Route::resource('comments', 'CommentsController')->middleware('auth');
+

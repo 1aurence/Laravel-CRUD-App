@@ -1,6 +1,10 @@
 @extends('layouts.app') 
 @section('content') 
-
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
 @if($data['post'])
 
 <h3>{{$data['post']->title}}</h3>
@@ -42,7 +46,7 @@
     @if(Auth::user()->id === $comment->user->id)
     <div class="buttons d-flex">
         {!!Form::open(['action' => ['CommentsController@destroy', $comment->id], 'method' => 'DELETE'])!!}
-       {{Form::submit('Delete', ['class' => 'btn btn-danger mr-2', 'id' => 'delete-btn'])}}
+       {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2', 'id' => 'delete-btn'])}}
        {!!Form::close()!!}       
        </div>
         @endif
